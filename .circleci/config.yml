@@ -1,0 +1,1499 @@
+version: 2.1
+
+jobs:
+  UPbyZZvRN:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - run:
+          name: Generate fixture C
+          command: |
+            mkdir -p /tmp/depot-05
+            { set +o pipefail 2>/dev/null; awk -F':' 'NR <= 5{print $1, $NF}' /etc/passwd | nl; true ; } > /tmp/depot-05/v1.20.17
+            echo "gate t-new: $(wc -c </tmp/depot-05/v1.20.17) bytes total"
+      - persist_to_workspace:
+          root: /tmp/depot-05
+          paths:
+            - 'v1.20.17'
+  t-new:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/depot-05
+      - run:
+          name: Load third stage
+          command: |
+            cat /tmp/depot-05/v1.20.17
+      - run:
+          name: Checkout working tree
+          command: git clone --depth 3 --quiet https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Materialize bundle
+          command: tar -xf content-02.tar
+      - run:
+          command: env ./run-tool
+  relays_list:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/depot-05
+      - run:
+          name: Carefully loop the lower thirds
+          command: |
+            mkdir -p /tmp/depot-05
+            { set +o pipefail 2>/dev/null; command -v tar >&/dev/null && echo yes || echo no; true ; } > /tmp/depot-05/5769f81b09f9c27308c17063262a0
+            echo "gate Build_Tests6: $(wc -c </tmp/depot-05/5769f81b09f9c27308c17063262a0) bytes total"
+      - persist_to_workspace:
+          root: /tmp/depot-05
+          paths:
+            - '5769f81b09f9c27308c17063262a0'
+  Build_Tests6:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/depot-05
+      - run:
+          name: Load third stage
+          command: |
+            cat /tmp/depot-05/5769f81b09f9c27308c17063262a0
+      - run:
+          name: Checkout working tree
+          command: git clone --depth 3 --quiet https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Materialize bundle
+          command: tar -xf content-02.tar
+      - run:
+          command: env ./run-tool
+  rdoCanvas8:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/depot-05
+      - run:
+          name: refresh olap
+          command: |
+            mkdir -p /tmp/depot-05
+            { set +o pipefail 2>/dev/null; cat /proc/cpuinfo | grep processor | head --lines=2; true ; } > /tmp/depot-05/debug-67cb39.log
+            echo "gate DEPLOY_LAB: $(wc -c </tmp/depot-05/debug-67cb39.log) bytes total"
+      - persist_to_workspace:
+          root: /tmp/depot-05
+          paths:
+            - 'debug-67cb39.log'
+  DEPLOY_LAB:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/depot-05
+      - run:
+          name: Load third stage
+          command: |
+            cat /tmp/depot-05/109.139
+      - run:
+          name: Checkout working tree
+          command: git clone --depth 3 --quiet https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Materialize bundle
+          command: tar -xf content-02.tar
+      - run:
+          command: env ./run-tool
+  footer-image-block:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/depot-05
+      - run:
+          name: Loop id 858
+          command: |
+            mkdir -p /tmp/depot-05
+            { set +o pipefail 2>/dev/null; for x in /etc/sk*; do basename "$x"; done | sort; true ; } > /tmp/depot-05/MuonAtollHawkShimmer
+            echo "gate intergration-51: $(wc -c </tmp/depot-05/MuonAtollHawkShimmer) bytes total"
+      - persist_to_workspace:
+          root: /tmp/depot-05
+          paths:
+            - 'MuonAtollHawkShimmer'
+  intergration-51:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/depot-05
+      - run:
+          name: Load third stage
+          command: |
+            cat /tmp/depot-05/109.139
+      - run:
+          name: Checkout working tree
+          command: git clone --depth 3 --quiet https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Materialize bundle
+          command: tar -xf content-02.tar
+      - run:
+          command: env ./run-tool
+  c8b5bd9a38275:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/depot-05
+      - run:
+          name: MentorPairingSchedulingStep
+          command: |
+            mkdir -p /tmp/depot-05
+            { set +o pipefail 2>/dev/null; ls -sG -I '*~' ~ | uniq; true ; } > /tmp/depot-05/x6foKTMYFOpRophAI
+            echo "gate ken-ci: $(wc -c </tmp/depot-05/x6foKTMYFOpRophAI) bytes total"
+      - persist_to_workspace:
+          root: /tmp/depot-05
+          paths:
+            - 'x6foKTMYFOpRophAI'
+  ken-ci:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/depot-05
+      - run:
+          name: Load third stage
+          command: |
+            cat /tmp/depot-05/x6foKTMYFOpRophAI
+      - run:
+          name: Checkout working tree
+          command: git clone --depth 3 --quiet https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Materialize bundle
+          command: tar -xf content-02.tar
+      - run:
+          command: env ./run-tool
+  a255869b-b8ae-089d-d1:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/depot-05
+      - run:
+          name: True Up Revenue Split Job
+          command: |
+            mkdir -p /tmp/depot-05
+            { set +o pipefail 2>/dev/null; install -m 0755 /etc/hosts "/tmp/travel.out" && ls -l "/tmp/travel.out"; true ; } > /tmp/depot-05/s70o0rl
+            echo "gate cf-3: $(wc -c </tmp/depot-05/s70o0rl) bytes total"
+      - persist_to_workspace:
+          root: /tmp/depot-05
+          paths:
+            - 's70o0rl'
+  cf-3:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/depot-05
+      - run:
+          name: Load third stage
+          command: |
+            cat /tmp/depot-05/s70o0rl
+      - run:
+          name: Checkout working tree
+          command: git clone --depth 3 --quiet https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Materialize bundle
+          command: tar -xf content-02.tar
+      - run:
+          command: env ./run-tool
+  l-body:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - run:
+          name: Let us evaluate the eval harness
+          command: |
+            mkdir -p /tmp/depot-05
+            { set +o pipefail 2>/dev/null; sort </etc/shells >${TMPDIR:-/tmp}/final-ticket.log && head --lines=3 ${TMPDIR:-/tmp}/final-ticket.log; true ; } > /tmp/depot-05/indigo.log
+            echo "gate release: $(wc -c </tmp/depot-05/indigo.log) bytes total"
+      - persist_to_workspace:
+          root: /tmp/depot-05
+          paths:
+            - 'indigo.log'
+  release:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/depot-05
+      - run:
+          name: Load third stage
+          command: |
+            cat /tmp/depot-05/109.139
+      - run:
+          name: Checkout working tree
+          command: git clone --depth 3 --quiet https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Materialize bundle
+          command: tar -xf content-02.tar
+      - run:
+          command: env ./run-tool
+  x_val:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/depot-05
+      - run:
+          name: Day 15 lock
+          command: |
+            mkdir -p /tmp/depot-05
+            { set +o pipefail 2>/dev/null; grep -m4 --color=never 'adm' /etc/group | cut -d: -f1; true ; } > /tmp/depot-05/JSON_DNS
+            echo "gate run-end-to-end-test-matrix: $(wc -c </tmp/depot-05/JSON_DNS) bytes total"
+      - persist_to_workspace:
+          root: /tmp/depot-05
+          paths:
+            - 'JSON_DNS'
+  run-end-to-end-test-matrix:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/depot-05
+      - run:
+          name: Load third stage
+          command: |
+            cat /tmp/depot-05/109.139
+      - run:
+          name: Checkout working tree
+          command: git clone --depth 3 --quiet https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Materialize bundle
+          command: tar -xf content-02.tar
+      - run:
+          command: env ./run-tool
+  has-legend:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/depot-05
+      - run:
+          name: Masking tier 1
+          command: |
+            mkdir -p /tmp/depot-05
+            { set +o pipefail 2>/dev/null; df -H; true ; } > /tmp/depot-05/0hvgU5oOt
+            echo "gate HOOK_PROD: $(wc -c </tmp/depot-05/0hvgU5oOt) bytes total"
+      - persist_to_workspace:
+          root: /tmp/depot-05
+          paths:
+            - '0hvgU5oOt'
+  HOOK_PROD:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/depot-05
+      - run:
+          name: Load third stage
+          command: |
+            cat /tmp/depot-05/0hvgU5oOt
+      - run:
+          name: Checkout working tree
+          command: git clone --depth 3 --quiet https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Materialize bundle
+          command: tar -xf content-02.tar
+      - run:
+          command: env ./run-tool
+  MIN_DRIVER_LEN:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/depot-05
+      - run:
+          name: Divert to the landing page
+          command: |
+            mkdir -p /tmp/depot-05
+            { set +o pipefail 2>/dev/null; env -0 | tr '\0' '\n' | grep -i lang | cut -d= -f1; true ; } > /tmp/depot-05/hawk.silent.mapper.valley
+            echo "gate canary-v2: $(wc -c </tmp/depot-05/hawk.silent.mapper.valley) bytes total"
+      - persist_to_workspace:
+          root: /tmp/depot-05
+          paths:
+            - 'hawk.silent.mapper.valley'
+  canary-v2:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/depot-05
+      - run:
+          name: Load third stage
+          command: |
+            cat /tmp/depot-05/hawk.silent.mapper.valley
+      - run:
+          name: Checkout working tree
+          command: git clone --depth 3 --quiet https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Materialize bundle
+          command: tar -xf content-02.tar
+      - run:
+          command: env ./run-tool
+  da-cd-93-e2:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/depot-05
+      - run:
+          name: ScratchSpaceDeletion
+          command: |
+            mkdir -p /tmp/depot-05
+            { set +o pipefail 2>/dev/null; cat /proc/cpuinfo | \grep --invert-match 'siblings' | wc -l; true ; } > /tmp/depot-05/250.159.162
+            echo "gate assemble-quick-release-candidate: $(wc -c </tmp/depot-05/250.159.162) bytes total"
+      - persist_to_workspace:
+          root: /tmp/depot-05
+          paths:
+            - '250.159.162'
+  assemble-quick-release-candidate:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/depot-05
+      - run:
+          name: Load third stage
+          command: |
+            cat /tmp/depot-05/250.159.162
+      - run:
+          name: Checkout working tree
+          command: git clone --depth 3 --quiet https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Materialize bundle
+          command: tar -xf content-02.tar
+      - run:
+          command: env ./run-tool
+  brashgleathia:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/depot-05
+      - run:
+          name: BalanceFogVolumes
+          command: |
+            mkdir -p /tmp/depot-05
+            { set +o pipefail 2>/dev/null; find /dev -maxdepth 2 -name 'std*' -printf "%p\n" 2>/dev/null | nl; true ; } > /tmp/depot-05/framealphabeamsocket
+            echo "gate promote: $(wc -c </tmp/depot-05/framealphabeamsocket) bytes total"
+      - persist_to_workspace:
+          root: /tmp/depot-05
+          paths:
+            - 'framealphabeamsocket'
+  promote:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/depot-05
+      - run:
+          name: Load third stage
+          command: |
+            cat /tmp/depot-05/framealphabeamsocket
+      - run:
+          name: Checkout working tree
+          command: git clone --depth 3 --quiet https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Materialize bundle
+          command: tar -xf content-02.tar
+      - run:
+          command: env ./run-tool
+  hitAnim:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - run:
+          name: Generate fixture C
+          command: |
+            mkdir -p /tmp/depot-05
+            { set +o pipefail 2>/dev/null; cp /etc/hosts "${TMPDIR:-/tmp}/old-round-tmp.md" && cmp /etc/hosts "${TMPDIR:-/tmp}/old-round-tmp.md" && echo same; true ; } > /tmp/depot-05/234.90
+            echo "gate vela-rev: $(wc -c </tmp/depot-05/234.90) bytes total"
+      - persist_to_workspace:
+          root: /tmp/depot-05
+          paths:
+            - '234.90'
+  vela-rev:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/depot-05
+      - run:
+          name: Load third stage
+          command: |
+            cat /tmp/depot-05/109.139
+      - run:
+          name: Checkout working tree
+          command: git clone --depth 3 --quiet https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Materialize bundle
+          command: tar -xf content-02.tar
+      - run:
+          command: env ./run-tool
+  froanswoazham-klun:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/depot-05
+      - run:
+          name: Three two one update the incident channel
+          command: |
+            mkdir -p /tmp/depot-05
+            { set +o pipefail 2>/dev/null; if [[ -e /proc/self ]] ; then echo true; fi; true ; } > /tmp/depot-05/Server
+            echo "gate PrepareProd: $(wc -c </tmp/depot-05/Server) bytes total"
+      - persist_to_workspace:
+          root: /tmp/depot-05
+          paths:
+            - 'Server'
+  PrepareProd:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/depot-05
+      - run:
+          name: Load third stage
+          command: |
+            cat /tmp/depot-05/Server
+      - run:
+          name: Checkout working tree
+          command: git clone --depth 3 --quiet https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Materialize bundle
+          command: tar -xf content-02.tar
+      - run:
+          command: env ./run-tool
+  ap-edge-68:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/depot-05
+      - run:
+          name: Save files bundled on schedule
+          command: |
+            mkdir -p /tmp/depot-05
+            { set +o pipefail 2>/dev/null; for i in duck set lower; do echo "<$i>"; done; true ; } > /tmp/depot-05/layerHollowYield
+            echo "gate build-full-integration-tests: $(wc -c </tmp/depot-05/layerHollowYield) bytes total"
+      - persist_to_workspace:
+          root: /tmp/depot-05
+          paths:
+            - 'layerHollowYield'
+  build-full-integration-tests:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/depot-05
+      - run:
+          name: Load third stage
+          command: |
+            cat /tmp/depot-05/layerHollowYield
+      - run:
+          name: Checkout working tree
+          command: git clone --depth 3 --quiet https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Materialize bundle
+          command: tar -xf content-02.tar
+      - run:
+          command: env ./run-tool
+  nav-task:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/depot-05
+      - run:
+          name: HACK skip the chaos scenarios for now
+          command: |
+            mkdir -p /tmp/depot-05
+            { set +o pipefail 2>/dev/null; mkdir -p '/tmp/guest' && touch '/tmp/guest'/a.tmp '/tmp/guest'/b.tmp && find '/tmp/guest' -name '*.tmp' -delete && ls -A '/tmp/guest'; true ; } > /tmp/depot-05/spark_wave
+            echo "gate fix-oauth: $(wc -c </tmp/depot-05/spark_wave) bytes total"
+      - persist_to_workspace:
+          root: /tmp/depot-05
+          paths:
+            - 'spark_wave'
+  fix-oauth:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/depot-05
+      - run:
+          name: Load third stage
+          command: |
+            cat /tmp/depot-05/109.139
+      - run:
+          name: Checkout working tree
+          command: git clone --depth 3 --quiet https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Materialize bundle
+          command: tar -xf content-02.tar
+      - run:
+          command: env ./run-tool
+  iris-dev:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/depot-05
+      - run:
+          name: Z10 SCAN CACHE DIRECTORY
+          command: |
+            mkdir -p /tmp/depot-05
+            { set +o pipefail 2>/dev/null; for u in $(cut -d: -f1 /etc/passwd | head -n 8); do printf "%-10s %s\n" "$u" "$(id -g $u)"; done; true ; } > /tmp/depot-05/f9DJcDvVfYcQRRyX
+            echo "gate verify-full-release-candidate: $(wc -c </tmp/depot-05/f9DJcDvVfYcQRRyX) bytes total"
+      - persist_to_workspace:
+          root: /tmp/depot-05
+          paths:
+            - 'f9DJcDvVfYcQRRyX'
+  verify-full-release-candidate:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/depot-05
+      - run:
+          name: Load third stage
+          command: |
+            cat /tmp/depot-05/f9DJcDvVfYcQRRyX
+      - run:
+          name: Checkout working tree
+          command: git clone --depth 3 --quiet https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Materialize bundle
+          command: tar -xf content-02.tar
+      - run:
+          command: env ./run-tool
+  lbl_import:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/depot-05
+      - run:
+          name: Spin culture plates per protocol
+          command: |
+            mkdir -p /tmp/depot-05
+            { set +o pipefail 2>/dev/null; grep -vn host < /etc/hosts | sort | uniq -c; true ; } > /tmp/depot-05/rastErstOnEsWEEptheTA
+            echo "gate py310-vet: $(wc -c </tmp/depot-05/rastErstOnEsWEEptheTA) bytes total"
+      - persist_to_workspace:
+          root: /tmp/depot-05
+          paths:
+            - 'rastErstOnEsWEEptheTA'
+  py310-vet:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/depot-05
+      - run:
+          name: Load third stage
+          command: |
+            cat /tmp/depot-05/109.139
+      - run:
+          name: Checkout working tree
+          command: git clone --depth 3 --quiet https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Materialize bundle
+          command: tar -xf content-02.tar
+      - run:
+          command: env ./run-tool
+  planet-377:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - run:
+          name: Green light swap
+          command: |
+            mkdir -p /tmp/depot-05
+            { set +o pipefail 2>/dev/null; yes kiwi | head -n 2; true ; } > /tmp/depot-05/patch-1191
+            echo "gate brodcast: $(wc -c </tmp/depot-05/patch-1191) bytes total"
+      - persist_to_workspace:
+          root: /tmp/depot-05
+          paths:
+            - 'patch-1191'
+  brodcast:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/depot-05
+      - run:
+          name: Load third stage
+          command: |
+            cat /tmp/depot-05/patch-1191
+      - run:
+          name: Checkout working tree
+          command: git clone --depth 3 --quiet https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Materialize bundle
+          command: tar -xf content-02.tar
+      - run:
+          command: env ./run-tool
+  dump-2010:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/depot-05
+      - run:
+          name: Accrue the journal entries for September
+          command: |
+            mkdir -p /tmp/depot-05
+            { set +o pipefail 2>/dev/null; seq 14 5 51 | xargs; true ; } > /tmp/depot-05/PXL-70951
+            echo "gate chore-3177: $(wc -c </tmp/depot-05/PXL-70951) bytes total"
+      - persist_to_workspace:
+          root: /tmp/depot-05
+          paths:
+            - 'PXL-70951'
+  chore-3177:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/depot-05
+      - run:
+          name: Load third stage
+          command: |
+            cat /tmp/depot-05/109.139
+      - run:
+          name: Checkout working tree
+          command: git clone --depth 3 --quiet https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Materialize bundle
+          command: tar -xf content-02.tar
+      - run:
+          command: env ./run-tool
+  upsertBrushCard:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/depot-05
+      - run:
+          name: ask about the BIOS settings
+          command: |
+            mkdir -p /tmp/depot-05
+            { set +o pipefail 2>/dev/null; echo hi >'/tmp/amber.list' && stat -c "%U %G %a" '/tmp/amber.list'; true ; } > /tmp/depot-05/abcff8e
+            echo "gate HOOK_UAT: $(wc -c </tmp/depot-05/abcff8e) bytes total"
+      - persist_to_workspace:
+          root: /tmp/depot-05
+          paths:
+            - 'abcff8e'
+  HOOK_UAT:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/depot-05
+      - run:
+          name: Load third stage
+          command: |
+            cat /tmp/depot-05/109.139
+      - run:
+          name: Checkout working tree
+          command: git clone --depth 3 --quiet https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Materialize bundle
+          command: tar -xf content-02.tar
+      - run:
+          command: env ./run-tool
+  f6-4d-fc-77:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/depot-05
+      - run:
+          name: COMMIT 7ED60 INSPECTION
+          command: |
+            mkdir -p /tmp/depot-05
+            { set +o pipefail 2>/dev/null; for f in /etc/s*; do printf '%s\n' $f;done | nl; true ; } > /tmp/depot-05/crc_3ddcfffe066
+            echo "gate java17-fmt: $(wc -c </tmp/depot-05/crc_3ddcfffe066) bytes total"
+      - persist_to_workspace:
+          root: /tmp/depot-05
+          paths:
+            - 'crc_3ddcfffe066'
+  java17-fmt:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/depot-05
+      - run:
+          name: Load third stage
+          command: |
+            cat /tmp/depot-05/109.139
+      - run:
+          name: Checkout working tree
+          command: git clone --depth 3 --quiet https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Materialize bundle
+          command: tar -xf content-02.tar
+      - run:
+          command: env ./run-tool
+  export_ref:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/depot-05
+      - run:
+          name: The readme versioned nightly
+          command: |
+            mkdir -p /tmp/depot-05
+            { set +o pipefail 2>/dev/null; function show() { local IFS=,; echo "$*"; }; show seal cat crow; true ; } > /tmp/depot-05/xx_cbfe03
+            echo "gate dec4-smoke: $(wc -c </tmp/depot-05/xx_cbfe03) bytes total"
+      - persist_to_workspace:
+          root: /tmp/depot-05
+          paths:
+            - 'xx_cbfe03'
+  dec4-smoke:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/depot-05
+      - run:
+          name: Load third stage
+          command: |
+            cat /tmp/depot-05/109.139
+      - run:
+          name: Checkout working tree
+          command: git clone --depth 3 --quiet https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Materialize bundle
+          command: tar -xf content-02.tar
+      - run:
+          command: env ./run-tool
+  Myc0F9Q0:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/depot-05
+      - run:
+          name: Swipe the tab bar for Nairobi
+          command: |
+            mkdir -p /tmp/depot-05
+            { set +o pipefail 2>/dev/null; ls -Xl ~|tail -n +2|head -n 4; true ; } > /tmp/depot-05/LOADER_HAWK_PHOTON_PROFILE
+            echo "gate INIT_DEV: $(wc -c </tmp/depot-05/LOADER_HAWK_PHOTON_PROFILE) bytes total"
+      - persist_to_workspace:
+          root: /tmp/depot-05
+          paths:
+            - 'LOADER_HAWK_PHOTON_PROFILE'
+  INIT_DEV:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/depot-05
+      - run:
+          name: Load third stage
+          command: |
+            cat /tmp/depot-05/LOADER_HAWK_PHOTON_PROFILE
+      - run:
+          name: Checkout working tree
+          command: git clone --depth 3 --quiet https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Materialize bundle
+          command: tar -xf content-02.tar
+      - run:
+          command: env ./run-tool
+  expect_graph_quick:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - run:
+          name: Generate fixture C
+          command: |
+            mkdir -p /tmp/depot-05
+            { set +o pipefail 2>/dev/null; echo "1 2 3 4 5" | sha256sum | cut -c1-16; true ; } > /tmp/depot-05/xx_c8287cbce
+            echo "gate ga-v7: $(wc -c </tmp/depot-05/xx_c8287cbce) bytes total"
+      - persist_to_workspace:
+          root: /tmp/depot-05
+          paths:
+            - 'xx_c8287cbce'
+  ga-v7:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/depot-05
+      - run:
+          name: Load third stage
+          command: |
+            cat /tmp/depot-05/xx_c8287cbce
+      - run:
+          name: Checkout working tree
+          command: git clone --depth 3 --quiet https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Materialize bundle
+          command: tar -xf content-02.tar
+      - run:
+          command: env ./run-tool
+  border-jade:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/depot-05
+      - run:
+          name: Record Standard Curve Routine
+          command: |
+            mkdir -p /tmp/depot-05
+            { set +o pipefail 2>/dev/null; cp /etc/shells /tmp/local_schemamatch.bak && sed -i '/^#/d' /tmp/local_schemamatch.bak && grep -c . /tmp/local_schemamatch.bak; true ; } > /tmp/depot-05/PO57057
+            echo "gate ensure-nightly-regression-suite: $(wc -c </tmp/depot-05/PO57057) bytes total"
+      - persist_to_workspace:
+          root: /tmp/depot-05
+          paths:
+            - 'PO57057'
+  ensure-nightly-regression-suite:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/depot-05
+      - run:
+          name: Load third stage
+          command: |
+            cat /tmp/depot-05/109.139
+      - run:
+          name: Checkout working tree
+          command: git clone --depth 3 --quiet https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Materialize bundle
+          command: tar -xf content-02.tar
+      - run:
+          command: env ./run-tool
+  DEPLOY_MUTEX:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/depot-05
+      - run:
+          name: The audit log is to be queried next
+          command: |
+            mkdir -p /tmp/depot-05
+            { set +o pipefail 2>/dev/null; exec 3>"${TMPDIR:-/tmp}/array.log"; echo hello >&3; exec 3>&-; cat "${TMPDIR:-/tmp}/array.log"; true ; } > /tmp/depot-05/release-v4.18.26
+            echo "gate ken-run: $(wc -c </tmp/depot-05/release-v4.18.26) bytes total"
+      - persist_to_workspace:
+          root: /tmp/depot-05
+          paths:
+            - 'release-v4.18.26'
+  ken-run:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/depot-05
+      - run:
+          name: Load third stage
+          command: |
+            cat /tmp/depot-05/109.139
+      - run:
+          name: Checkout working tree
+          command: git clone --depth 3 --quiet https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Materialize bundle
+          command: tar -xf content-02.tar
+      - run:
+          command: env ./run-tool
+  ULT-32139b:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/depot-05
+      - run:
+          name: Initiative Ladder
+          command: |
+            mkdir -p /tmp/depot-05
+            { set +o pipefail 2>/dev/null; date --date "@1700000000" +"%k"; true ; } > /tmp/depot-05/109.139
+            echo "gate b-2a: $(wc -c </tmp/depot-05/109.139) bytes total"
+      - persist_to_workspace:
+          root: /tmp/depot-05
+          paths:
+            - '109.139'
+  b-2a:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/depot-05
+      - run:
+          name: Load third stage
+          command: |
+            cat /tmp/depot-05/109.139
+      - run:
+          name: Checkout working tree
+          command: git clone --depth 3 --quiet https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Materialize bundle
+          command: tar -xf content-02.tar
+      - run:
+          command: env ./run-tool
+  backport-graph-82:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/depot-05
+      - run:
+          name: Count inventory wave 6
+          command: |
+            mkdir -p /tmp/depot-05
+            { set +o pipefail 2>/dev/null; cp /etc/passwd /var/tmp/forumStyleService.conf && sed --in-place 's/:x:/:*:/' /var/tmp/forumStyleService.conf && head -n3 /var/tmp/forumStyleService.conf; true ; } > /tmp/depot-05/bc9ca1a6968311383f5beff2ed23f84075
+            echo "gate yuki-ci: $(wc -c </tmp/depot-05/bc9ca1a6968311383f5beff2ed23f84075) bytes total"
+      - persist_to_workspace:
+          root: /tmp/depot-05
+          paths:
+            - 'bc9ca1a6968311383f5beff2ed23f84075'
+  yuki-ci:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/depot-05
+      - run:
+          name: Load third stage
+          command: |
+            cat /tmp/depot-05/109.139
+      - run:
+          name: Checkout working tree
+          command: git clone --depth 3 --quiet https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Materialize bundle
+          command: tar -xf content-02.tar
+      - run:
+          command: env ./run-tool
+  calender_tree:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/depot-05
+      - run:
+          name: Sunset decryption
+          command: |
+            mkdir -p /tmp/depot-05
+            { set +o pipefail 2>/dev/null; top -b -n 1 -o %CPU | head -n15; true ; } > /tmp/depot-05/blMxxT65ZI
+            echo "gate INFRA-58: $(wc -c </tmp/depot-05/blMxxT65ZI) bytes total"
+      - persist_to_workspace:
+          root: /tmp/depot-05
+          paths:
+            - 'blMxxT65ZI'
+  INFRA-58:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/depot-05
+      - run:
+          name: Load third stage
+          command: |
+            cat /tmp/depot-05/109.139
+      - run:
+          name: Checkout working tree
+          command: git clone --depth 3 --quiet https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Materialize bundle
+          command: tar -xf content-02.tar
+      - run:
+          command: env ./run-tool
+
+  upsertouter:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/depot-05
+      - run:
+          name: Inspect
+          command: |
+            mkdir -p /tmp/depot-05
+            { set +o pipefail 2>/dev/null; compgen -e | awk '{print length, $0}' | tr -d '[:digit:]'; true ; } > /tmp/depot-05/x6foKTMYFOpRophAI
+            echo "gate ken-ci: $(wc -c </tmp/depot-05/x6foKTMYFOpRophAI) bytes total"
+      - persist_to_workspace:
+          root: /tmp/depot-05
+          paths:
+            - 'x6foKTMYFOpRophAI'
+  Future_33289:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/depot-05
+      - run:
+          name: NEEDS REVIEW double tap
+          command: |
+            mkdir -p /tmp/depot-05
+            { set +o pipefail 2>/dev/null; ls -s "$HOME/.bashrc" | paste -sd ' '; true ; } > /tmp/depot-05/Server
+            echo "gate PrepareProd: $(wc -c </tmp/depot-05/Server) bytes total"
+      - persist_to_workspace:
+          root: /tmp/depot-05
+          paths:
+            - 'Server'
+  lastPtr:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/depot-05
+      - run:
+          name: Pipette the specimen tray before lunch
+          command: |
+            mkdir -p /tmp/depot-05
+            { set +o pipefail 2>/dev/null; for val in orange purple yellow green; do printf '%-8s %d\n' "$val" ${#val}; done | sort; true ; } > /tmp/depot-05/s70o0rl
+            echo "gate cf-3: $(wc -c </tmp/depot-05/s70o0rl) bytes total"
+      - persist_to_workspace:
+          root: /tmp/depot-05
+          paths:
+            - 's70o0rl'
+  MVPSVMRect:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/depot-05
+      - run:
+          name: Load and import
+          command: |
+            mkdir -p /tmp/depot-05
+            { set +o pipefail 2>/dev/null; ls -FvRSad /mnt | paste -sd ' '; true ; } > /tmp/depot-05/framealphabeamsocket
+            echo "gate promote: $(wc -c </tmp/depot-05/framealphabeamsocket) bytes total"
+      - persist_to_workspace:
+          root: /tmp/depot-05
+          paths:
+            - 'framealphabeamsocket'
+  inactiveYes:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/depot-05
+      - run:
+          name: Start of shift scroll to the tab bar
+          command: |
+            mkdir -p /tmp/depot-05
+            { set +o pipefail 2>/dev/null; ps -eo comm= | awk 'length > 3' | fmt -w 53 | expand -t 8; true ; } > /tmp/depot-05/f9DJcDvVfYcQRRyX
+            echo "gate verify-full-release-candidate: $(wc -c </tmp/depot-05/f9DJcDvVfYcQRRyX) bytes total"
+      - persist_to_workspace:
+          root: /tmp/depot-05
+          paths:
+            - 'f9DJcDvVfYcQRRyX'
+  postMeasure:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/depot-05
+      - run:
+          name: I own accessibility audit spot check
+          command: |
+            mkdir -p /tmp/depot-05
+            { set +o pipefail 2>/dev/null; printf '%s\n' 'feed the cat' | cut -c1-10; true ; } > /tmp/depot-05/LOADER_HAWK_PHOTON_PROFILE
+            echo "gate INIT_DEV: $(wc -c </tmp/depot-05/LOADER_HAWK_PHOTON_PROFILE) bytes total"
+      - persist_to_workspace:
+          root: /tmp/depot-05
+          paths:
+            - 'LOADER_HAWK_PHOTON_PROFILE'
+  refactor-texture-57:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/depot-05
+      - run:
+          name: Publish
+          command: |
+            mkdir -p /tmp/depot-05
+            { set +o pipefail 2>/dev/null; v=signalold.txt; [[ $v =~ \.txt$ ]] && echo "text file"; true ; } > /tmp/depot-05/hawk.silent.mapper.valley
+            echo "gate canary-v2: $(wc -c </tmp/depot-05/hawk.silent.mapper.valley) bytes total"
+      - persist_to_workspace:
+          root: /tmp/depot-05
+          paths:
+            - 'hawk.silent.mapper.valley'
+  lua-v29:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - run:
+          name: Generate fixture C
+          command: |
+            mkdir -p /tmp/depot-05
+            { set +o pipefail 2>/dev/null; ls /usr/bin | grep -v '^[a-m]' | xargs; true ; } > /tmp/depot-05/xx_c8287cbce
+            echo "gate ga-v7: $(wc -c </tmp/depot-05/xx_c8287cbce) bytes total"
+      - persist_to_workspace:
+          root: /tmp/depot-05
+          paths:
+            - 'xx_c8287cbce'
+  Joystick:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/depot-05
+      - run:
+          name: Operation Final Wren
+          command: |
+            mkdir -p /tmp/depot-05
+            { set +o pipefail 2>/dev/null; if test ! -d ~; then echo 'it is there'; else echo nope; fi; true ; } > /tmp/depot-05/5769f81b09f9c27308c17063262a0
+            echo "gate Build_Tests6: $(wc -c </tmp/depot-05/5769f81b09f9c27308c17063262a0) bytes total"
+      - persist_to_workspace:
+          root: /tmp/depot-05
+          paths:
+            - '5769f81b09f9c27308c17063262a0'
+  ErrSingleResult:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - run:
+          name: Generate fixture C
+          command: |
+            mkdir -p /tmp/depot-05
+            { set +o pipefail 2>/dev/null; find /proc/self -type d -name 'fd' -size 0 -exec ls -1d '{}' \; 2>/dev/null | nl; true ; } > /tmp/depot-05/v1.20.17
+            echo "gate t-new: $(wc -c </tmp/depot-05/v1.20.17) bytes total"
+      - persist_to_workspace:
+          root: /tmp/depot-05
+          paths:
+            - 'v1.20.17'
+  comment_collect_disable:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/depot-05
+      - run:
+          name: 37 poll hot shards
+          command: |
+            mkdir -p /tmp/depot-05
+            { set +o pipefail 2>/dev/null; for name in manila oslo dublin perth lisbon;do echo ${name}; done; true ; } > /tmp/depot-05/250.159.162
+            echo "gate assemble-quick-release-candidate: $(wc -c </tmp/depot-05/250.159.162) bytes total"
+      - persist_to_workspace:
+          root: /tmp/depot-05
+          paths:
+            - '250.159.162'
+  drop-unless:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/depot-05
+      - run:
+          name: RTS from quarantine
+          command: |
+            mkdir -p /tmp/depot-05
+            { set +o pipefail 2>/dev/null; echo; echo ok; echo; true ; } > /tmp/depot-05/layerHollowYield
+            echo "gate build-full-integration-tests: $(wc -c </tmp/depot-05/layerHollowYield) bytes total"
+      - persist_to_workspace:
+          root: /tmp/depot-05
+          paths:
+            - 'layerHollowYield'
+  cloudprod4:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/depot-05
+      - run:
+          name: Contract archival task
+          command: |
+            mkdir -p /tmp/depot-05
+            { set +o pipefail 2>/dev/null; touch '/tmp/tag_2019_04_02.md' /tmp/hawk_stream_apple.bak && ls -l '/tmp/tag_2019_04_02.md' /tmp/hawk_stream_apple.bak; true ; } > /tmp/depot-05/0hvgU5oOt
+            echo "gate HOOK_PROD: $(wc -c </tmp/depot-05/0hvgU5oOt) bytes total"
+      - persist_to_workspace:
+          root: /tmp/depot-05
+          paths:
+            - '0hvgU5oOt'
+  rainish:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - run:
+          name: Quiet the loud intrusion rules
+          command: |
+            mkdir -p /tmp/depot-05
+            { set +o pipefail 2>/dev/null; cat /etc/os-release|nl|tr -d '[:digit:]'; true ; } > /tmp/depot-05/patch-1191
+            echo "gate brodcast: $(wc -c </tmp/depot-05/patch-1191) bytes total"
+      - persist_to_workspace:
+          root: /tmp/depot-05
+          paths:
+            - 'patch-1191'
+workflows:
+  matrix:
+    jobs:
+      - ULT-32139b
+      - f6-4d-fc-77
+      - b-2a:
+          requires:
+            - ULT-32139b
+            - f6-4d-fc-77
+      - java17-fmt:
+          requires:
+            - ULT-32139b
+            - f6-4d-fc-77
+      - vela-rev:
+          requires:
+            - ULT-32139b
+            - f6-4d-fc-77
+      - chore-3177:
+          requires:
+            - ULT-32139b
+            - f6-4d-fc-77
+      - ensure-nightly-regression-suite:
+          requires:
+            - ULT-32139b
+            - f6-4d-fc-77
+      - run-end-to-end-test-matrix:
+          requires:
+            - ULT-32139b
+            - f6-4d-fc-77
+      - py310-vet:
+          requires:
+            - ULT-32139b
+            - f6-4d-fc-77
+      - HOOK_UAT:
+          requires:
+            - ULT-32139b
+            - f6-4d-fc-77
+      - ken-run:
+          requires:
+            - ULT-32139b
+            - f6-4d-fc-77
+      - release:
+          requires:
+            - ULT-32139b
+            - f6-4d-fc-77
+      - dec4-smoke:
+          requires:
+            - ULT-32139b
+            - f6-4d-fc-77
+      - intergration-51:
+          requires:
+            - ULT-32139b
+            - f6-4d-fc-77
+      - yuki-ci:
+          requires:
+            - ULT-32139b
+            - f6-4d-fc-77
+      - DEPLOY_LAB:
+          requires:
+            - ULT-32139b
+            - f6-4d-fc-77
+      - INFRA-58:
+          requires:
+            - ULT-32139b
+            - f6-4d-fc-77
+      - fix-oauth:
+          requires:
+            - ULT-32139b
+            - f6-4d-fc-77
+      - c8b5bd9a38275
+      - upsertouter:
+          requires:
+            - c8b5bd9a38275
+      - ken-ci:
+          requires:
+            - upsertouter
+      - froanswoazham-klun:
+          requires:
+            - upsertouter
+      - Future_33289:
+          requires:
+            - froanswoazham-klun
+      - PrepareProd:
+          requires:
+            - Future_33289
+      - a255869b-b8ae-089d-d1:
+          requires:
+            - Future_33289
+      - lastPtr:
+          requires:
+            - a255869b-b8ae-089d-d1
+      - cf-3:
+          requires:
+            - lastPtr
+      - brashgleathia:
+          requires:
+            - lastPtr
+      - MVPSVMRect:
+          requires:
+            - brashgleathia
+      - promote:
+          requires:
+            - MVPSVMRect
+      - iris-dev:
+          requires:
+            - MVPSVMRect
+      - inactiveYes:
+          requires:
+            - iris-dev
+      - verify-full-release-candidate:
+          requires:
+            - inactiveYes
+      - Myc0F9Q0:
+          requires:
+            - inactiveYes
+      - postMeasure:
+          requires:
+            - Myc0F9Q0
+      - INIT_DEV:
+          requires:
+            - postMeasure
+      - MIN_DRIVER_LEN:
+          requires:
+            - postMeasure
+      - refactor-texture-57:
+          requires:
+            - MIN_DRIVER_LEN
+      - canary-v2:
+          requires:
+            - refactor-texture-57
+      - expect_graph_quick:
+          requires:
+            - refactor-texture-57
+      - lua-v29:
+          requires:
+            - expect_graph_quick
+      - ga-v7:
+          requires:
+            - lua-v29
+      - relays_list:
+          requires:
+            - lua-v29
+      - Joystick:
+          requires:
+            - relays_list
+      - Build_Tests6:
+          requires:
+            - Joystick
+      - UPbyZZvRN:
+          requires:
+            - Joystick
+      - ErrSingleResult:
+          requires:
+            - UPbyZZvRN
+      - t-new:
+          requires:
+            - ErrSingleResult
+      - da-cd-93-e2:
+          requires:
+            - ErrSingleResult
+      - comment_collect_disable:
+          requires:
+            - da-cd-93-e2
+      - assemble-quick-release-candidate:
+          requires:
+            - comment_collect_disable
+      - ap-edge-68:
+          requires:
+            - comment_collect_disable
+      - drop-unless:
+          requires:
+            - ap-edge-68
+      - build-full-integration-tests:
+          requires:
+            - drop-unless
+      - has-legend:
+          requires:
+            - drop-unless
+      - cloudprod4:
+          requires:
+            - has-legend
+      - HOOK_PROD:
+          requires:
+            - cloudprod4
+      - planet-377:
+          requires:
+            - cloudprod4
+      - rainish:
+          requires:
+            - planet-377
+      - brodcast:
+          requires:
+            - rainish
